@@ -4,6 +4,7 @@ import Home from './Pages/Home'
 import BuyCredit from './Pages/BuyCredit'
 import Result from './Pages/Result'
 import Navbar from './Components/Navbar'
+import Footer from './Components/Footer'
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ min-h-screen bg-gradient-to-r from-white via-blue-50 to-blue-100 text-gray-800">
         <Route path='/buy-credit' element={<BuyCredit />} />
         <Route path='/result' element={<Result />} />
       </Routes>
+
+      <Footer/>
     </div>
   )
 }
