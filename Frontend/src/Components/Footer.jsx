@@ -12,7 +12,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <p className="text-gray-600 text-sm text-center sm:text-left">
-        © 2026 Mohamed-Dahy | All rights reserved.
+        © 2026 Imagify | All rights reserved.
       </p>
 
       {/* Social icons */}
