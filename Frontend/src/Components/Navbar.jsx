@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../Context/appContext'
 const Navbar = () => {
-    const {user} = useContext(AppContext);
+    const {user,setShowlogin} = useContext(AppContext);
 
     
     const navigate = useNavigate();
   return (
     <div className='flex items-center justify-between py-4'>
-       <Link to='/'><img src={assets.logo} alt="" className='w-28 sm:w-32 lg:w-40' /> </Link> 
+       <Link to='/'><img src={assets.logo} alt="" className='w-28 sm:w-32 lg:w-40'  /> </Link> 
 
        <div>
         {user ? 
@@ -31,7 +31,7 @@ const Navbar = () => {
         :
         <div className='flex items-center gap-4 text-sm sm:text-base lg:text-lg'>
           <p   onClick={() => navigate('/buy-credit')} className='cursor-pointer hover:underline'>Pricing</p>
-          <button className='bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300'>Login</button>
+          <button onClick={()=>setShowlogin(true)} className='bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300'>Login</button>
         </div>
     }
         
