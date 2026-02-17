@@ -12,8 +12,9 @@ const App = () => {
 
   const {showLogin} = useContext(AppContext)
   return (
-    <div className="px-4 sm:px-10 md:px-14 lg:px-28 
-min-h-screen  from-white via-blue-50 to-blue-100 text-gray-800">
+<div className="px-4 sm:px-10 md:px-14 lg:px-28 
+min-h-screen bg-linear-to-br from-white via-blue-50 to-blue-200 text-gray-800">
+
 
       
       <Navbar />
