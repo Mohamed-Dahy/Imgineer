@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { assets } from '../assets/assets'
+import {motion} from 'framer-motion'
 
 const Result = () => {
 
@@ -13,7 +14,13 @@ const Result = () => {
   }
 
   return (
-    <form onSubmit={onsubmitHandler} className="px-4 sm:px-10 lg:px-28 py-16 flex flex-col items-center gap-8">
+    <motion.form
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7 }}
+    whileInView={{opacity:1,y:0}}
+    viewport={{once:true}}    
+    onSubmit={onsubmitHandler} className="px-4 sm:px-10 lg:px-28 py-16 flex flex-col items-center gap-8">
       
       {/* Image preview card */}
       <div className="bg-white rounded-xl shadow-lg p-4 w-full max-w-md">
@@ -71,7 +78,7 @@ const Result = () => {
       
 
 
-    </form>
+    </motion.form>
   )
 }
 
