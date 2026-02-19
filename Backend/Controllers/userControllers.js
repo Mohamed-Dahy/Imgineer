@@ -25,7 +25,14 @@ const registerUser = async (req, res) => {
     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
 
 
-    res.status(201).json({ message: "User registered successfully", token });
+    res.status(201).json({
+  success: true,
+  token,
+  user: {
+   newUser
+  }
+});
+
   } catch (error) {
     console.error("Error registering user:", error);
     res.status(500).json({ message: "Server error" });
@@ -47,7 +54,14 @@ const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
-    res.status(200).json({ message: "Login successful", token });
+    res.status(200).json({
+  success: true,
+  token,
+  user: {
+  user
+  }
+});
+
   } catch (error) {
     console.error("Error logging in user:", error);
     res.status(500).json({ message: "Server error" });
@@ -57,7 +71,7 @@ const loginUser = async (req, res) => {
 const userCredits = async(req,res)=>{
   try{
     const {userId} = req.body;
-  const user = userModel.findById(userId);
+  const user = await userModel.findById(userId);
   if(!user){
     return res.status(404).json({message : "User not found"});
   }
@@ -69,4 +83,4 @@ const userCredits = async(req,res)=>{
   
 }
 
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser , userCredits };
