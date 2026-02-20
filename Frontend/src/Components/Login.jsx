@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 
 const Login = () => {
   const [state,setState] = useState('Login')
-  const {setShowlogin,backendURL,setToken,setUser} = useContext(AppContext)
+  const {setShowLogin,backendURL,setToken,setUser} = useContext(AppContext)
   const [name,setName] = useState('');
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
@@ -20,7 +20,7 @@ const Login = () => {
           setToken(data.token);
           setUser(data.user)
           localStorage.setItem('token',data.token)
-          setShowlogin(false)
+          setShowLogin(false)
       }else {
         toast.error(data.message)
       }
@@ -30,7 +30,7 @@ const Login = () => {
           setToken(data.token);
           setUser(data.user)
           localStorage.setItem('token',data.token)
-          setShowlogin(false)
+          setShowLogin(false)
       }else {
         toast.error(data.message)
       }
@@ -72,7 +72,7 @@ const Login = () => {
           <motion.img 
             src={assets.cross_icon} 
             alt="Close" 
-            onClick={() => setShowlogin(false)}
+            onClick={() => setShowLogin(false)}
             whileHover={{ scale: 1.2 }}
             className="absolute top-5 right-5 w-6 h-6 cursor-pointer transition-transform"
           />

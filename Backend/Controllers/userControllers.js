@@ -28,9 +28,7 @@ const registerUser = async (req, res) => {
     res.status(201).json({
   success: true,
   token,
-  user: {
-   newUser
-  }
+  user: newUser
 });
 
   } catch (error) {
@@ -57,9 +55,7 @@ const loginUser = async (req, res) => {
     res.status(200).json({
   success: true,
   token,
-  user: {
-  user
-  }
+  user: user
 });
 
   } catch (error) {
@@ -73,12 +69,12 @@ const userCredits = async(req,res)=>{
     const {userId} = req.body;
   const user = await userModel.findById(userId);
   if(!user){
-    return res.status(404).json({message : "User not found"});
+    return res.status(404).json({success: false, message : "User not found"});
   }
-  res.status(200).json({creditBalance : user.creditBalance});
+  res.status(200).json({success: true, creditBalance : user.creditBalance, user: user});
   }catch(error){
     console.error("Error fetching user credits:", error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({success: false, message: "Server error" });
   }  
   
 }
