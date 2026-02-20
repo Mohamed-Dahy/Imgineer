@@ -31,7 +31,7 @@ const Navbar = () => {
         </div>
         :
         <div className='flex items-center gap-4 text-sm sm:text-base lg:text-lg'>
-          <p   onClick={() => navigate('/buy-credit')} className='cursor-pointer hover:underline'>Pricing</p>
+          <p   onClick={() => navigate('/buy-credits')} className='cursor-pointer hover:underline'>Pricing</p>
           <button onClick={()=>setShowLogin(true)} className='bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300'>Login</button>
         </div>
     }
