@@ -1,6 +1,8 @@
-import React,{useState} from 'react'
+import React,{useContext, useState} from 'react'
 import { assets } from '../assets/assets'
 import {motion} from 'framer-motion'
+import {AppContext} from '../Context/appContext'
+import { toast } from 'react-toastify'
 
 const Result = () => {
 
@@ -8,9 +10,27 @@ const Result = () => {
   const [isImageLoading,setIsImageLoading] = useState(false)
   const [Loading ,setLoading] = useState(false)
   const [Input,setInput] = useState('')
+  const {generateImage, credit} = useContext(AppContext)
 
   const onsubmitHandler = async (e) =>{  // later with backend
-
+    e.preventDefault()
+    if(credit <= 0){
+      toast.error("No credits available! Please buy credits to generate images.");
+      return
+    }
+    setLoading(true)
+    if(Input){
+      const image = await generateImage(Input)
+      if(image){
+        setIsImageLoading(true);
+        setImage(image)
+        setLoading(false)
+      } else {
+        setLoading(false)
+      }
+    } else {
+      setLoading(false)
+    }
   }
 
   return (
